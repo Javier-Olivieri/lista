@@ -1,7 +1,8 @@
-// IEFE
 (() => { 
     // state variables
     let toDoListArray = [];
+    let actionHistory = [];
+
     // ui variables
     const form = document.querySelector(".form"); 
     const input = form.querySelector(".form__input");
@@ -18,6 +19,7 @@
       //pass ID and item into functions
       addItemToDOM(itemId , toDoItem);
       addItemToArray(itemId, toDoItem);
+      addActionToHistory('add', itemId, toDoItem);
       // clear the input box. (this is default behaviour but we got rid of that)
       input.value = '';
     });
@@ -28,9 +30,15 @@
       //pass id through to functions
       removeItemFromDOM(id);
       removeItemFromArray(id);
+      addActionToHistory('remove', id);
     });
-    
-    // functions 
+
+    // functions
+    function addActionToHistory(actionType, itemId, toDoItem = null) {
+      actionHistory.push({ actionType, itemId, toDoItem, timestamp: new Date() });
+      console.log(actionHistory);
+    }
+
     function addItemToDOM(itemId, toDoItem) {    
       // create an li
       const li = document.createElement('li')
@@ -60,4 +68,4 @@
       console.log(toDoListArray);
     }
     
-  })();
+})();
