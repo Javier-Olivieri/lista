@@ -92,14 +92,14 @@ const shareButton = document.querySelector(".share-button");
 shareButton.addEventListener('click', () => {
     const listItems = Array.from(document.querySelectorAll(".toDoList li"));
     const sharedMessage = listItems.map(item => item.innerText).join('\n');
+
     const currentUrl = window.location.href;
+    const sharedUrl = `${currentUrl}#messages=${encodeURIComponent(sharedMessage)}`;
 
-    // Combina los mensajes y el enlace en el mensaje compartido
-    const completeMessage = `¡Hola! Aquí tienes una lista de tareas:\n\n${sharedMessage}\n\nPuedes editarla aquí: ${currentUrl}`;
-
-    // Abrir WhatsApp con el mensaje completo compartido
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(completeMessage)}`);
+    // Abrir WhatsApp con el enlace compartido
+    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(sharedUrl)}`);
 });
+
 
 
 })();
