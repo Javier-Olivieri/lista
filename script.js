@@ -84,21 +84,6 @@
       localStorage.setItem('actionHistory', JSON.stringify(actionHistory));
     }
 
-   // ... (tu código JavaScript existente) ...
-
-// Event listener para el botón de compartir
-const shareButton = document.querySelector(".share-button");
-
-shareButton.addEventListener('click', () => {
-    const listItems = Array.from(document.querySelectorAll(".toDoList li"));
-    const sharedMessage = listItems.map(item => item.innerText).join('\n');
-
-    const currentUrl = window.location.href;
-    const sharedUrl = `${currentUrl}#messages=${encodeURIComponent(sharedMessage)}`;
-
-    // Abrir WhatsApp con el enlace compartido
-    window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(sharedUrl)}`);
-});
 
 
 
