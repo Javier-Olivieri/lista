@@ -13,6 +13,20 @@ body {
   font-size: 130%;
 }
 
+.share-button {
+  background-color: #4CAF50;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.share-button:hover {
+  background-color: #45a049;
+}
+
 @media only screen and (min-width: 500px) {
   body {
     min-height: 100vh;
