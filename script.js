@@ -84,15 +84,19 @@
       localStorage.setItem('actionHistory', JSON.stringify(actionHistory));
     }
 
-    const shareButton = document.querySelector(".share-button");
+   // ... (tu código JavaScript existente) ...
 
-    shareButton.addEventListener('click', () => {
-    const listUrl = window.location.href;
-    const sharedMessage = `¡Hola! He compartido una lista de tareas contigo. Puedes verla y editarla aquí: ${listUrl}`;
+// Event listener para el botón de compartir
+const shareButton = document.querySelector(".share-button");
+
+shareButton.addEventListener('click', () => {
+    const listItems = Array.from(document.querySelectorAll(".toDoList li"));
+    const sharedMessage = listItems.map(item => item.innerText).join('\n');
     
     // Abrir WhatsApp con el mensaje compartido
     window.open(`https://api.whatsapp.com/send?text=${encodeURIComponent(sharedMessage)}`);
-  });
+});
+
 })();
 
 
